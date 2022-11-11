@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 part of 'pages.dart';
 
 class OngkirPage extends StatefulWidget {
@@ -320,14 +322,31 @@ class _OngkirPageState extends State<OngkirPage> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: ElevatedButton(
+                              child: const Text("Hitung estimasi ongkir"),
+                              onPressed: () {
+                                if (selectedOriginCity != null &&
+                                    selectedDestCity != null) {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Origin : ${selectedOriginCity.cityName.toString()}, Destination :  ${selectedDestCity.cityName.toString()}",
+                                      backgroundColor: Colors.green);
+                                } else {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Origin dan atau Destination masih belum di set!",
+                                      backgroundColor: Colors.red);
+                                }
+                              },
+                            )),
+                      ),
                     ],
                   ),
                 ),
-                Flexible(
-                  flex: 1,
-                  child: Container(
-                      alignment: Alignment.center, child: const Text("data")),
-                )
               ],
             ),
           ),
